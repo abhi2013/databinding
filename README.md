@@ -1,9 +1,11 @@
 ## Android MVVM with DI+Volley demo
 A demo app demonstrating an MVVM implementation on Android. The app displays the current hot submissions from the Android subreddit.
 
-## Libraries used :
+## Libraries
+The app uses the following libraries :
 ### Dagger for Dependency Injection
 ### Volley for Networking
+### Moshi for JSON serialisation
 ### Mockito for Unit testing
 
 ## App design
@@ -27,5 +29,6 @@ MainActivity - this is the main app Activity in this single Activity application
 PostsListViewModelTest - tests the view model state
 
 ## Future Considerations
-The demo app has no data persistency across app restarts. Consider integrating Room to add data persistency.
+The demo app has no data persistency across app restarts. Consider integrating Room to add data persistency.<br />
+The demo app has no integrated crash reporting/memory leak detection.
 The reddit API does not require any OAuth authentication to fetch the Android subreddits - consider adding an Authentication Service for authenticating API requests.
