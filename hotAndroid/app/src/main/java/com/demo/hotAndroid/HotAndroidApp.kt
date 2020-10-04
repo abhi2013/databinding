@@ -1,6 +1,8 @@
 package com.demo.hotAndroid
 
 import android.app.Application
+import android.app.IntentService
+import com.demo.hotAndroid.api.DataService
 import com.demo.hotAndroid.di.AppComponent
 import com.demo.hotAndroid.di.DaggerAppComponent
 import com.demo.hotAndroid.util.Logger
@@ -14,7 +16,7 @@ class HotAndroidApp : Application(), HasAndroidInjector {
     @Inject
     lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>
 
-    // TODO - Initialise all app singletons e.g. DataService, ConnectivityService
+    @Inject lateinit var dataService: DataService
 
     lateinit var appComponent : AppComponent
 
