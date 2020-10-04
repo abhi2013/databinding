@@ -1,7 +1,7 @@
-package com.demo.hotAndroid.ui.main
+package com.demo.hotAndroid.viewmodel
 
 import androidx.lifecycle.ViewModel
 
-class MainViewModel : ViewModel() {
+class PostsViewModel : ViewModel() {
     // TODO: Implement the ViewModel
 }
