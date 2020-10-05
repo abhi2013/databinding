@@ -14,3 +14,4 @@ data class PostData(
 ) {
 
 }
+typealias Posts = List<PostData>
