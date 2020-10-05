@@ -7,4 +7,19 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="cardView" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="android:background">@color/white</item>
+        <item name="cardCornerRadius">2dp</item>
+        <item name="cardElevation">2dp</item>
+    </style>
+
+    <style name="LargeText">
+        <item name="android:textSize">@dimen/text_large</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+    <style name="MediumText">
+        <item name="android:textSize">@dimen/text_medium</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
 </resources>
