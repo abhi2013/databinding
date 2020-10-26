@@ -37,6 +37,8 @@ class NumbersFragment : Fragment() {
             layoutInflater,
             R.layout.numbers_list_fragment, container, false
         )
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.viewModel = viewModel
         viewManager = LinearLayoutManager(context)
         viewAdapter = NumbersListAdapter { number ->
             Logger.verbose("Tapped number : ${number.number.value}")
@@ -47,13 +49,11 @@ class NumbersFragment : Fragment() {
         numbersList.adapter = viewAdapter
         viewModel.fetch()
         viewModel.entries.observe(viewLifecycleOwner, Observer {
-            binding.swipeRefresh.isRefreshing =  it.status == Status.LOADING
             if (it.status == Status.SUCCESS) {
                 viewAdapter.submitList(it.data)
                 viewAdapter.notifyDataSetChanged()
             }
         })
-        // TODO - handle swipe down to refresh gesture
         return binding.root
     }
 
@@ -61,6 +61,5 @@ class NumbersFragment : Fragment() {
         AndroidSupportInjection.inject(this)
         super.onAttach(context)
     }
-
 
 }

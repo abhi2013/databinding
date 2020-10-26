@@ -1,20 +1,15 @@
 package com.demo.dataDemo.data.model
 
-data class InputNumbers<T>(val numbers : Array<InputNumber<T>>) {
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (javaClass != other?.javaClass) return false
+data class InputNumbers<T>(val numbers : MutableList<InputNumber<T>>) {
 
-        other as InputNumbers<*>
-
-        if (!numbers.contentEquals(other.numbers)) return false
-
-        return true
+    fun add(number : T){
+        numbers.add(InputNumber(number))
     }
 
-    override fun hashCode(): Int {
-        return numbers.contentHashCode()
+    fun clear(){
+        numbers.clear()
     }
+
 }
 
 data class InputNumber<out T>(val value : T){

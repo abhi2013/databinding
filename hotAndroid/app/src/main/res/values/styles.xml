@@ -7,6 +7,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="ButtonStyle" parent="Widget.MaterialComponents.Button.Icon">
+        <item name="android:textSize">@dimen/text_large</item>
+    </style>
+
     <style name="cardView" parent="@style/Widget.MaterialComponents.CardView">
         <item name="android:background">@color/white</item>
         <item name="cardCornerRadius">2dp</item>

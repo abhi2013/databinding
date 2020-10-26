@@ -5,5 +5,5 @@ import javax.inject.Singleton
 
 @Singleton
 class Configuration @Inject constructor() {
-     val cacheFileName = "numbers"
+     val cacheFileName = "numbers1"
 }
