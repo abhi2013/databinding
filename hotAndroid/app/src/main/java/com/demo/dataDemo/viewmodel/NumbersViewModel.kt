@@ -8,7 +8,6 @@ import com.demo.dataDemo.data.Resource
 import com.demo.dataDemo.data.Status
 import com.demo.dataDemo.data.model.InputNumber
 import com.demo.dataDemo.data.model.InputNumbers
-import java.lang.Exception
 import javax.inject.Inject
 
 class NumbersViewModel @Inject constructor(val numbersRepository: NumbersRepository) : ViewModel() {
@@ -35,7 +34,6 @@ class NumbersViewModel @Inject constructor(val numbersRepository: NumbersReposit
         }
     }
 
-
     private fun update() {
         if (numbers.value!!.status == Status.LOADING) {
             entries.value = Resource.loading(null)
@@ -49,7 +47,7 @@ class NumbersViewModel @Inject constructor(val numbersRepository: NumbersReposit
             val newMean = calcMean(intNumbers)
             mean.postValue("Mean : ${String.format("%.2f", newMean)}")
             val newMedian = calcMedian(intNumbers)
-            median.postValue("Median value : $newMedian")
+            median.postValue("Median value : ${String.format("%.2f", newMedian)}")
         } else {
             mean.postValue(kDefaultMean)
             median.postValue(kDefaultMedian)
@@ -59,33 +57,38 @@ class NumbersViewModel @Inject constructor(val numbersRepository: NumbersReposit
 
     // Converts the user input text to an Integer and consequently sets the displayable validation error
     private fun validate() {
+        if (newNumber.value.isNullOrEmpty()) {
+            validationError.postValue("Please enter a number.")
+            return
+        }
         try {
             newNumber.value!!.toInt()
             validationError.value = null
-        } catch(e : NumberFormatException) {
-            validationError.postValue("Please enter a valid integer.")
+        } catch (e: NumberFormatException) {
+            validationError.postValue("Please enter a valid number between ${Int.MIN_VALUE} and ${Int.MAX_VALUE}.")
         }
     }
 
     fun addNumber() {
-        val newNumber = newNumber.value!!.toInt()
-        numbersRepository.addNumber(newNumber)
+        val number = newNumber.value!!.toInt()
+        newNumber.value = null
+        numbersRepository.addNumber(number)
     }
 
     fun clearNumbers() {
         numbersRepository.clear()
     }
 
-    private fun calcMean(numbers: IntArray): Double {
+    internal fun calcMean(numbers: IntArray): Double {
         return numbers.average()
     }
 
-    private fun calcMedian(numbers: IntArray): Int {
+    internal fun calcMedian(numbers: IntArray): Double {
         val count = numbers.size
         val sortedNumbers = numbers.sorted()
         return when (count % 2 == 0) {
-            true -> (sortedNumbers[count / 2] + sortedNumbers[(count / 2) - 1]) / 2
-            false -> sortedNumbers[(count - 1) / 2]
+            true -> (sortedNumbers[count / 2] + sortedNumbers[(count / 2) - 1]) / 2.0
+            false -> sortedNumbers[(count - 1) / 2].toDouble()
         }
     }
 }

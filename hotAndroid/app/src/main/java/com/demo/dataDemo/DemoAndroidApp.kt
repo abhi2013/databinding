@@ -21,7 +21,7 @@ class DemoAndroidApp : Application(), HasAndroidInjector {
         super.onCreate()
         appComponent = DaggerAppComponent.builder().application(this).build()
         appComponent.inject(this)
-        Logger.verbose("Application  created")
+        Logger.verbose("Application created")
     }
 
     override fun androidInjector() = dispatchingAndroidInjector

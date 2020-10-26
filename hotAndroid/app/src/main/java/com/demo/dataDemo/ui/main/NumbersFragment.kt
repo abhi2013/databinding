@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -54,6 +55,15 @@ class NumbersFragment : Fragment() {
                 viewAdapter.notifyDataSetChanged()
             }
         })
+
+        // Added a listener for the 'Done' key on the soft-keyboard being pressed
+        binding.number.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+               viewModel.addNumber()
+            }
+            false
+        }
+
         return binding.root
     }
 

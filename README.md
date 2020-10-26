@@ -12,8 +12,10 @@ The app is composed of the following components:
 InputNumber - a data class to represent a user input.
 ### Repository
 PostsRepository - A singleton that maintains an in-memory cache of user inputs.
+### Data Service
+DataService - A singleton that maintains a persistent store of the user inputs using a simple File storage mechanism.
 ### ViewModel
-NumbersViewModel - maintains a view representation of the user input data with. This isn't affected by onfiguration changes such as recreating an activity.
+NumbersViewModel - maintains a view representation of the user input data with. This isn't affected by configuration changes such as recreating the MainActivity.
 ### Fragments (Views)
 NumbersFragment - displays the list of hot posts
 ### Activity

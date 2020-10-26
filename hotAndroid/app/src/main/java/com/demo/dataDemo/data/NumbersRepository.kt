@@ -6,8 +6,9 @@ import com.demo.dataDemo.data.model.InputNumbers
 import javax.inject.Inject
 import javax.inject.Singleton
 
+// This class is open to allow for mocking when unit-testing
 @Singleton
-class NumbersRepository @Inject constructor(val dataService: DataService) {
+open class NumbersRepository @Inject constructor(val dataService: DataService) {
     var numbers: MutableLiveData<Resource<InputNumbers<Int>>> =
         MutableLiveData(Resource(Status.LOADING, null, null))
     var cache: InputNumbers<Int> = InputNumbers(numbers = mutableListOf())

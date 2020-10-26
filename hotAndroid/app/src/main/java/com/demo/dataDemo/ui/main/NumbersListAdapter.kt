@@ -12,11 +12,11 @@ import com.demo.dataDemo.R
 import com.demo.dataDemo.databinding.NumbersListItemBinding
 import com.demo.dataDemo.viewmodel.NumbersViewModel
 
-class NumbersListAdapter<T>(val clickListener: (NumbersViewModel.Entry<T>) -> Unit) :
+class NumbersListAdapter<T>(private val clickListener: (NumbersViewModel.Entry<T>) -> Unit) :
     ListAdapter<NumbersViewModel.Entry<T>, NumbersListAdapter.ItemViewHolder<T>>(DiffCallback<T>()) {
 
     class ItemViewHolder<T>(
-        val binding: ViewDataBinding,
+        private val binding: ViewDataBinding,
         private val entryClickListener: (NumbersViewModel.Entry<T>) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: NumbersViewModel.Entry<T>) = with(itemView) {
@@ -28,7 +28,6 @@ class NumbersListAdapter<T>(val clickListener: (NumbersViewModel.Entry<T>) -> Un
             }
         }
     }
-
 
     override fun onBindViewHolder(holder: NumbersListAdapter.ItemViewHolder<T>, position: Int) {
         holder.bind(getItem(position))
@@ -63,6 +62,5 @@ class NumbersListAdapter<T>(val clickListener: (NumbersViewModel.Entry<T>) -> Un
             return oldItem.number == newItem.number
         }
     }
-
 
 }

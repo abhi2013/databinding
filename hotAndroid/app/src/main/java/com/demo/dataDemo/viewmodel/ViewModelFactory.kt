@@ -22,6 +22,7 @@ import androidx.lifecycle.ViewModelProvider
 import javax.inject.Inject
 import javax.inject.Provider
 import javax.inject.Singleton
+
 /*
 The ViewModelFactory provides a method to create an instance of a ViewModel from its class type
  */
