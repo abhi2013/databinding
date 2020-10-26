@@ -5,8 +5,8 @@
 
     <fragment
         android:id="@+id/listFragment"
-        android:name="com.demo.hotAndroid.ui.main.PostsListFragment"
-        android:label="SearchFragment" >
+        android:name="com.demo.dataDemo.ui.main.NumbersFragment"
+        android:label="Demo" >
     </fragment>
 
 </navigation>
